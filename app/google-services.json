@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "391244306340",
+    "firebase_url": "https://medtime-13d21.firebaseio.com",
+    "project_id": "medtime-13d21",
+    "storage_bucket": "medtime-13d21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391244306340:android:7ae7c2416ff80854a69331",
+        "android_client_info": {
+          "package_name": "com.iitism.medtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391244306340-foug8agkga8f12mt53hbm00ajse51dir.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iitism.medtime",
+            "certificate_hash": "7f7f7f0443dc2a4800d4be9c1299634f6e45d908"
+          }
+        },
+        {
+          "client_id": "391244306340-bgu5c9k76k4g6crd23k4bmm426p8poqf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8Y7S8Xp2h6Sq01l8ee2e2A5kLJ2CK3fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391244306340-bgu5c9k76k4g6crd23k4bmm426p8poqf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
