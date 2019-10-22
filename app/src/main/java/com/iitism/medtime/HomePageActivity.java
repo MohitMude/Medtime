@@ -127,6 +127,9 @@ public class HomePageActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_alert) {
 
+        }else if (id == R.id.nav_lederboard) {
+            Intent i=new Intent(getApplicationContext(),LeaderboardActivity.class);
+            startActivity(i);
         }
         else if (id == R.id.nav_logout) {
 
