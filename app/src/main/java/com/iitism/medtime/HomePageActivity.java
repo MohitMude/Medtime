@@ -156,9 +156,6 @@ public class HomePageActivity extends AppCompatActivity
                 }
 
 
-                adapter=new MyMedicineAdapter(getApplicationContext(),list);
-                recyclerView.setAdapter(adapter);
-
             }
 
             @Override
@@ -166,5 +163,10 @@ public class HomePageActivity extends AppCompatActivity
 
             }
         });
+
+
+        adapter=new MyMedicineAdapter(getApplicationContext(),list);
+        recyclerView.setAdapter(adapter);
+
     }
 }

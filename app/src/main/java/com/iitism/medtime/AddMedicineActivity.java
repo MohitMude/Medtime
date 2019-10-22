@@ -126,13 +126,13 @@ public class AddMedicineActivity extends AppCompatActivity implements View.OnCli
         }
         else if(view==tue)
         {if(dayOfWeekList[2]==false)
-        {dayOfWeekList[1]=true;
-            mon.setBackgroundResource(R.drawable.btn_selected_background);
+        {dayOfWeekList[2]=true;
+            tue.setBackgroundResource(R.drawable.btn_selected_background);
             Toast.makeText(getApplicationContext(), ""+dayOfWeekList[2], Toast.LENGTH_SHORT).show();}
         else
         {
             dayOfWeekList[2]=false;
-            mon.setBackgroundResource(R.drawable.btn_light_background);
+            tue.setBackgroundResource(R.drawable.btn_light_background);
             Toast.makeText(getApplicationContext(), ""+dayOfWeekList[2], Toast.LENGTH_SHORT).show();
         }
 
@@ -142,26 +142,26 @@ public class AddMedicineActivity extends AppCompatActivity implements View.OnCli
         else if(view==wed)
         {
             if(dayOfWeekList[3]==false)
-            {dayOfWeekList[1]=true;
-                mon.setBackgroundResource(R.drawable.btn_selected_background);
+            {dayOfWeekList[3]=true;
+                wed.setBackgroundResource(R.drawable.btn_selected_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[3], Toast.LENGTH_SHORT).show();}
             else
             {
                 dayOfWeekList[3]=false;
-                mon.setBackgroundResource(R.drawable.btn_light_background);
+                wed.setBackgroundResource(R.drawable.btn_light_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[3], Toast.LENGTH_SHORT).show();
             }
         }
         else if(view==thu)
         {
             if(dayOfWeekList[4]==false)
-            {dayOfWeekList[1]=true;
-                mon.setBackgroundResource(R.drawable.btn_selected_background);
+            {dayOfWeekList[4]=true;
+                thu.setBackgroundResource(R.drawable.btn_selected_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[4], Toast.LENGTH_SHORT).show();}
             else
             {
                 dayOfWeekList[4]=false;
-                mon.setBackgroundResource(R.drawable.btn_light_background);
+                thu.setBackgroundResource(R.drawable.btn_light_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[4], Toast.LENGTH_SHORT).show();
             }
 
@@ -169,26 +169,26 @@ public class AddMedicineActivity extends AppCompatActivity implements View.OnCli
         else if(view==fri)
         {
             if(dayOfWeekList[5]==false)
-            {dayOfWeekList[1]=true;
-                mon.setBackgroundResource(R.drawable.btn_selected_background);
+            {dayOfWeekList[5]=true;
+                fri.setBackgroundResource(R.drawable.btn_selected_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[5], Toast.LENGTH_SHORT).show();}
             else
             {
                 dayOfWeekList[5]=false;
-                mon.setBackgroundResource(R.drawable.btn_light_background);
+                fri.setBackgroundResource(R.drawable.btn_light_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[5], Toast.LENGTH_SHORT).show();
             }
         }
         else if(view==sat)
         {
             if(dayOfWeekList[6]==false)
-            {dayOfWeekList[1]=true;
-                mon.setBackgroundResource(R.drawable.btn_selected_background);
+            {dayOfWeekList[6]=true;
+                sat.setBackgroundResource(R.drawable.btn_selected_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[6], Toast.LENGTH_SHORT).show();}
             else
             {
                 dayOfWeekList[6]=false;
-                mon.setBackgroundResource(R.drawable.btn_light_background);
+                sat.setBackgroundResource(R.drawable.btn_light_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[6], Toast.LENGTH_SHORT).show();
             }
 
@@ -196,13 +196,13 @@ public class AddMedicineActivity extends AppCompatActivity implements View.OnCli
         else if(view==sun)
         {
             if(dayOfWeekList[0]==false)
-            {dayOfWeekList[1]=true;
-                mon.setBackgroundResource(R.drawable.btn_selected_background);
+            {dayOfWeekList[0]=true;
+                sun.setBackgroundResource(R.drawable.btn_selected_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[0], Toast.LENGTH_SHORT).show();}
             else
             {
                 dayOfWeekList[0]=false;
-                mon.setBackgroundResource(R.drawable.btn_light_background);
+                sun.setBackgroundResource(R.drawable.btn_light_background);
                 Toast.makeText(getApplicationContext(), ""+dayOfWeekList[0], Toast.LENGTH_SHORT).show();
             }
         }
@@ -219,7 +219,7 @@ public class AddMedicineActivity extends AppCompatActivity implements View.OnCli
         hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
         minute = mCurrentTime.get(Calendar.MINUTE);
         TimePickerDialog mTimePicker;
-        mTimePicker = new TimePickerDialog(getApplicationContext(), new TimePickerDialog.OnTimeSetListener() {
+        mTimePicker = new TimePickerDialog( AddMedicineActivity.this,new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 hour = selectedHour;
@@ -227,8 +227,10 @@ public class AddMedicineActivity extends AppCompatActivity implements View.OnCli
                 selectedtime.setText(String.format(Locale.getDefault(), "%d:%d", selectedHour, selectedMinute));
             }
         }, hour, minute, false);//No 24 hour time
-        mTimePicker.setTitle("Select Time");
+
         mTimePicker.show();
+
+
     }
 
     private void setCurrentTime() {
