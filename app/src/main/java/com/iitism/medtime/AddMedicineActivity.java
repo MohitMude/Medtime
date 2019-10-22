@@ -236,6 +236,7 @@ public class AddMedicineActivity extends AppCompatActivity implements View.OnCli
         hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
         minute = mCurrentTime.get(Calendar.MINUTE);
 
+
         selectedtime.setText(String.format(Locale.getDefault(), "%d:%d", hour, minute));
     }
 

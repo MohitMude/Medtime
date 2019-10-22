@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,12 @@ public class MyMedicineAdapter extends RecyclerView.Adapter<MyMedicineAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
       MyMedicineModel myMedicineModel=list.get(position);
+      String a="Name : "+myMedicineModel.getMedname();
+      String b="Type : "+myMedicineModel.getMedtype();
+
+      holder.medname.setText(a);
+      holder.medtype.setText(b);
+
     }
 
     @Override
@@ -45,8 +52,12 @@ public class MyMedicineAdapter extends RecyclerView.Adapter<MyMedicineAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView medname,medtype;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            medname=itemView.findViewById(R.id.txt_med_name);
+            medtype=itemView.findViewById(R.id.txt_med_type);
         }
     }
 }

@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -15,22 +16,37 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.iitism.medtime.Adapters.MyMedicineAdapter;
 import com.iitism.medtime.Authentication.LoginActivity;
+import com.iitism.medtime.ModelClass.MyMedicineModel;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomePageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     RecyclerView recyclerView;
-
+    RecyclerView.Adapter adapter;
+    List<MyMedicineModel> list;
     FirebaseAuth firebaseAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    String name,type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +54,14 @@ public class HomePageActivity extends AppCompatActivity
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        databaseReference=firebaseDatabase.getReference();
+
         recyclerView=findViewById(R.id.medicine_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        loadRecyclerView();
+
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -116,5 +139,32 @@ public class HomePageActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public  void loadRecyclerView()
+    {
+        list =new ArrayList<>();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds:dataSnapshot.getChildren())
+                {
+                    name=ds.child("Name").getValue(String.class);
+                    type=ds.child("Type").getValue(String.class);
+                    MyMedicineModel myMedicineModel=new MyMedicineModel(name,type);
+                    list.add(myMedicineModel);
+                }
+
+
+                adapter=new MyMedicineAdapter(getApplicationContext(),list);
+                recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
